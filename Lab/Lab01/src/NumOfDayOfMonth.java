@@ -68,12 +68,10 @@ public class NumOfDayOfMonth {
         else if(month == 4 || month == 6 || month == 9 || month == 11)
             System.out.print("30");
         else {
-            boolean leapYear = false;
+            boolean leapYear = true;
 
-            if(year % 100 == 0)
-                if(year % 400 == 0) leapYear = true;
-            else
-                if(year % 4 == 0) leapYear = true;
+            if((year % 100 == 0 && year % 400 != 0) || (year % 4 != 0))
+                leapYear = false;
 
             if(leapYear) System.out.print("29");
             else System.out.print("28");

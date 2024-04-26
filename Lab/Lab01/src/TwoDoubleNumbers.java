@@ -13,6 +13,6 @@ public class TwoDoubleNumbers {
         System.out.println("The sum: " + (a + b));
         System.out.println("The difference: " + (a - b));
         System.out.println("The product: " + (a * b));
-        System.out.println("The quotient: " + (a % b));
+        System.out.println("The quotient: " + (a / b));
     }
 }
