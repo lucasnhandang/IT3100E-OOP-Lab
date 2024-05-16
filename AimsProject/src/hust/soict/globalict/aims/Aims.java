@@ -8,8 +8,6 @@ import java.util.Collections;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
-
-
 public class Aims {
     private static Scanner scanner = new Scanner(System.in);
     public static Store store = new Store();

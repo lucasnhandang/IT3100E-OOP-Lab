@@ -3,6 +3,10 @@ package hust.soict.globalict.aims.media;
 public class DigitalVideoDisc extends Disc implements Playable {
     private String director;
     private int length;
+
+    public DigitalVideoDisc(String name, String genre, String director, int length, double v) {
+    }
+
     public String getDirector() {
         return director;
     }
