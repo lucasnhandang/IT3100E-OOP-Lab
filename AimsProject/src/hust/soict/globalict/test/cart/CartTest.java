@@ -1,13 +1,14 @@
 package hust.soict.globalict.test.cart;
 
 import hust.soict.globalict.aims.cart.*;
+import hust.soict.globalict.aims.exception.PlayerException;
 import hust.soict.globalict.aims.media.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CartTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws PlayerException {
         Cart cart = new Cart();
 
         DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King",

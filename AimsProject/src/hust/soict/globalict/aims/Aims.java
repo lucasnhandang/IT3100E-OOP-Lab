@@ -1,6 +1,7 @@
 package hust.soict.globalict.aims;
 
 import hust.soict.globalict.aims.cart.*;
+import hust.soict.globalict.aims.exception.PlayerException;
 import hust.soict.globalict.aims.media.*;
 import hust.soict.globalict.aims.store.*;
 
@@ -8,12 +9,13 @@ import java.util.Collections;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
+
 public class Aims {
     private static Scanner scanner = new Scanner(System.in);
     public static Store store = new Store();
     public static Cart cart = new Cart();
 
-    public static void showMenu () {
+    public static void showMenu () throws PlayerException {
         System.out.println("AIMS: ");
         System.out.println("--------------------------------");
         System.out.println("1. View store");
@@ -42,7 +44,7 @@ public class Aims {
     }
 
     // Option 1: View store
-    private static void viewStore(){
+    private static void viewStore() throws PlayerException {
         System.out.println("-------------STORE--------------");
         for (Media item : store.getItemsInStore()){
             System.out.println(item);
@@ -50,7 +52,7 @@ public class Aims {
         System.out.println("--------------------------------");
         storeMenu();
     }
-    public static void storeMenu() {
+    public static void storeMenu() throws PlayerException {
         System.out.println("Options: ");
         System.out.println("--------------------------------");
         System.out.println("1. See a media’s details");
@@ -83,7 +85,7 @@ public class Aims {
         }
         storeMenu();
     }
-    private static void seeMediaDetail() {
+    private static void seeMediaDetail() throws PlayerException {
         System.out.println("Enter title of media: ");
         String title = scanner.nextLine();
         boolean isInStore = false;
@@ -98,7 +100,7 @@ public class Aims {
             System.out.println("This media is not in the store.");
         }
     }
-    public static void mediaDetailsMenu (Media media) {
+    public static void mediaDetailsMenu (Media media) throws PlayerException {
         System.out.println("Options: ");
         System.out.println("--------------------------------");
         System.out.println("1. Add to cart");
@@ -116,11 +118,19 @@ public class Aims {
             case 2:
                 if (media instanceof CompactDisc){
                     CompactDisc castMedia = (CompactDisc) media;
-                    castMedia.play();
+                    try {
+                        castMedia.play();
+                    } catch (PlayerException e) {
+                        e.printStackTrace();
+                    }
                 }
                 else if (media instanceof DigitalVideoDisc){
                     DigitalVideoDisc castMedia = (DigitalVideoDisc) media;
-                    castMedia.play();
+                    try {
+                        castMedia.play();
+                    } catch (PlayerException e) {
+                        e.printStackTrace();
+                    }
                 }
                 else {
                     System.out.println("This media can not display.");
@@ -133,7 +143,7 @@ public class Aims {
         storeMenu();
     }
 
-    private static void addMediaToCart() {
+    private static void addMediaToCart() throws PlayerException {
         for (Media media: store.getItemsInStore()) {
             System.out.println(media);
         }
@@ -151,7 +161,7 @@ public class Aims {
         }
         storeMenu();
     }
-    private static void playMedia() {
+    private static void playMedia() throws PlayerException {
         System.out.println("Enter the title of media to play: ");
         String usrTitle = scanner.nextLine();
         boolean isInStore = false;
@@ -178,7 +188,7 @@ public class Aims {
     }
 
     // Option 2: Update store in showMenu()
-    private static void updateStore(){
+    private static void updateStore() throws PlayerException {
         //System.out.println("[Update store]");
         System.out.println("Options: ");
         System.out.println("--------------------------------");
@@ -203,7 +213,7 @@ public class Aims {
         }
     }
     // 2.1
-    public static void addMediaToStore(){
+    public static void addMediaToStore() throws PlayerException {
         //System.out.println("[Add a media to store]");
         System.out.println("Options: ");
         System.out.println("--------------------------------");
@@ -255,7 +265,7 @@ public class Aims {
         }
     }
     // 2.2
-    public static void removeMediaStore() {
+    public static void removeMediaStore() throws PlayerException {
         store.display();
         System.out.println("Enter id of media to remove: ");
         int id = scanner.nextInt();
@@ -274,12 +284,12 @@ public class Aims {
     }
 
     // Option 3: See cur. cart in showMenu()
-    private static void seeCurrentCart(){
+    private static void seeCurrentCart() throws PlayerException {
         cart.print();
         cartMenu();
     }
 
-    public static void cartMenu() {
+    public static void cartMenu() throws PlayerException {
         System.out.println("Options: ");
         System.out.println("--------------------------------");
         System.out.println("1. Filter media in cart");
@@ -316,7 +326,7 @@ public class Aims {
         }
         cartMenu();
     }
-    public static void filterMedia(){
+    public static void filterMedia() throws PlayerException {
         System.out.println("Options: ");
         System.out.println("--------------------------------");
         System.out.println("1. Filter by id");
@@ -343,7 +353,7 @@ public class Aims {
         }
         cartMenu();
     }
-    public static void sortMedia(){
+    public static void sortMedia() throws PlayerException {
         System.out.println("Options: ");
         System.out.println("--------------------------------");
         System.out.println("1. Sort by id");
@@ -368,7 +378,7 @@ public class Aims {
         }
         cartMenu();
     }
-    public static void removeMediaFromCart() {
+    public static void removeMediaFromCart() throws PlayerException {
         cart.print();
         System.out.println("Enter id of media in cart to remove: ");
         int id = scanner.nextInt();
@@ -385,7 +395,7 @@ public class Aims {
         }
         cartMenu();
     }
-    public static void playMediaInCart () {
+    public static void playMediaInCart () throws PlayerException {
         cart.print();
         System.out.println("Enter id of media in cart to play: ");
         int id = scanner.nextInt();
@@ -395,11 +405,19 @@ public class Aims {
             if (media.getId() == id){
                 if (media instanceof CompactDisc){
                     CompactDisc castMedia = (CompactDisc) media;
-                    castMedia.play();
+                    try {
+                        castMedia.play();
+                    } catch (PlayerException e) {
+                        e.printStackTrace();
+                    }
                 }
                 else if (media instanceof DigitalVideoDisc){
                     DigitalVideoDisc castMedia = (DigitalVideoDisc) media;
-                    castMedia.play();
+                    try {
+                        castMedia.play();
+                    } catch (PlayerException e) {
+                        e.printStackTrace();
+                    }
                 }
                 else {
                     System.out.println("Media with this id is not playable.");
@@ -417,7 +435,7 @@ public class Aims {
     }
 
     // TEST
-    public static void main(String[] args) {
+    public static void main(String[] args) throws PlayerException {
         DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King",
                 "Animation", "Roger Allers", 87, 19.95f);
         store.addMedia(dvd1);

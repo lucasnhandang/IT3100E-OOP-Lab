@@ -65,5 +65,18 @@ public class Store {
         addMedia(new CompactDisc(3, "Rock Anthems", "Rock", 9.99f, "Alice Johnson", "Artist Three", Arrays.asList(track1, track3, track5)));
         addMedia(new CompactDisc(4, "Jazz Classics", "Jazz", 12.99f, "Bob Brown", "Artist Four", Arrays.asList(track2, track4)));
         addMedia(new CompactDisc(5, "Hip Hop Beats", "Hip Hop", 11.99f, "Chris Green", "Artist Five", Arrays.asList(track1, track2, track3, track4, track5)));
+
+        CompactDisc cd = new CompactDisc(69, "HARD", "Music", 250508f, "SHINee");
+        Track t1 = new Track("HARD", 123);
+        Track t2 = new Track("Juice", 123);
+        Track t3 = new Track("The Feeling", 123);
+        Track t4 = new Track("Like It", 123);
+        Track t5 = new Track("10X", 123);
+        cd.addTrack(t1);
+        cd.addTrack(t2);
+        cd.addTrack(t3);
+        cd.addTrack(t4);
+        cd.addTrack(t5);
+        addMedia(cd);
     }
 }

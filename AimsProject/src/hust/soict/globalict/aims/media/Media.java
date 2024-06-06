@@ -2,7 +2,6 @@ package hust.soict.globalict.aims.media;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Comparator;
 
 public abstract class Media {
@@ -54,8 +53,18 @@ public abstract class Media {
     @Override
     public boolean equals(Object o) {
         if (o instanceof Media) {
-            Media media = (Media) o;
-            return Objects.equals(media.getTitle(), this.getTitle());
+            try {
+                Media media = (Media) o;
+                return media.getTitle() == this.getTitle();
+            }
+            catch (NullPointerException e) {
+                e.printStackTrace();
+                return false;
+            }
+            catch (ClassCastException e) {
+                e.printStackTrace();
+                return false;
+            }
         }
         else {
             return false;
